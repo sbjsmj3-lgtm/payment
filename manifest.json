@@ -1,9 +1,9 @@
 {
-  "name": "모의 결제창",
+  "name": "슈퍼 짱짱 패키지 모의 결제",
   "short_name": "모의 결제",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#f2f1f7",
-  "theme_color": "#f2f1f7",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": []
 }

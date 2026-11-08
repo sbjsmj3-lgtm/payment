@@ -1,69 +1,10 @@
 <!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f2f1f7">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="모의 결제">
-<link rel="manifest" href="manifest.json">
-<title>모의 앱 내 구입</title>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#fff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="모의 결제"><link rel="manifest" href="manifest.json"><title>슈퍼 짱짱 패키지</title>
 <style>
-:root{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Apple SD Gothic Neo",sans-serif;color:#080808;background:#242424}
-*{box-sizing:border-box}
-body{margin:0;min-height:100svh;display:grid;place-items:center;padding:10px}
-.sheet{position:relative;width:min(100%,560px);min-height:min(96svh,900px);background:#f2f1f7;border-radius:54px;padding:38px 24px 34px;display:flex;flex-direction:column;align-items:center;box-shadow:0 18px 70px #0008}
-.top{width:100%;height:88px;display:flex;align-items:center;justify-content:center;font-size:27px;font-weight:750;letter-spacing:-1px}
-.close{position:absolute;left:24px;top:24px;width:62px;height:62px;border-radius:50%;border:1px solid #c9c8cf;background:#f8f7fb;font-size:44px;font-weight:300;line-height:1;color:#111;cursor:pointer}
-.demo{position:absolute;right:24px;top:47px;font-size:10px;font-weight:800;letter-spacing:1px;color:#7653b5;border:1px solid #c8b8e8;border-radius:20px;padding:5px 8px}
-.appicon{margin-top:60px;width:112px;height:112px;border-radius:27px;background:linear-gradient(145deg,#fff,#e4ddff);box-shadow:0 7px 20px #0002;display:grid;place-items:center;font-size:55px}
-h1{font-size:31px;font-weight:550;letter-spacing:-1.5px;margin:26px 0 8px;text-align:center}
-.subtitle{color:#88868e;font-size:21px;text-align:center;line-height:1.55}
-.card{width:100%;margin-top:auto;margin-bottom:45px;background:white;border-radius:38px;padding:28px 26px 24px}
-.price{font-size:33px;font-weight:700;letter-spacing:-1px}
-.once{font-size:22px;color:#929098;margin-top:2px}
-.line{height:1px;background:#dedde2;margin:26px 0 22px}
-.account{font-size:19px;color:#88868e;overflow-wrap:anywhere}
-.confirm{border:0;background:transparent;display:flex;align-items:center;gap:12px;font-size:21px;font-weight:600;padding:12px;cursor:pointer}
-.sideicon{width:37px;height:37px;border:2px solid #1685ed;border-radius:50%;color:#1685ed;display:grid;place-items:center;font-size:23px}
-.note{font-size:12px;color:#777;margin-top:12px;text-align:center}
-.toast{display:none;position:fixed;inset:0;background:#0007;place-items:center;padding:24px}
-.toast.show{display:grid}
-.dialog{background:#fff;border-radius:28px;padding:28px;width:min(100%,360px);text-align:center;box-shadow:0 10px 50px #0004}
-.dialog .check{font-size:42px;color:#248b56}
-.dialog h2{margin:8px 0;font-size:24px}
-.dialog p{color:#666;line-height:1.55}
-.dialog button{width:100%;border:0;border-radius:14px;background:#171717;color:white;padding:14px;font-size:16px;font-weight:650}
-@media(max-height:700px){.sheet{min-height:96svh;padding-top:20px}.appicon{margin-top:18px;width:86px;height:86px;font-size:43px}h1{margin-top:16px}.card{margin-bottom:20px;padding:20px}.top{height:65px}}
-</style>
-</head>
-<body>
-<main class="sheet" aria-label="모의 결제 화면">
-  <button class="close" aria-label="닫기" onclick="showMessage('결제가 취소되었습니다.','이 화면은 연습용 모의 결제입니다.')">×</button>
-  <div class="top">앱 내 구입</div><span class="demo">DEMO · 가상 결제</span>
-  <div class="appicon" aria-hidden="true">🧩</div>
-  <h1>Pixel Package</h1>
-  <div class="subtitle">그려라! 용사 (RPG)　전체<br>앱 내 구입</div>
-  <section class="card">
-    <div class="price">₩6,600</div>
-    <div class="once">일회성 청구 · 모의 결제</div>
-    <div class="line"></div>
-    <div class="account">계정: demo@example.com</div>
-  </section>
-  <button class="confirm" onclick="showMessage('모의 결제가 완료되었습니다!','실제 결제·청구·계좌 이용은 전혀 발생하지 않았습니다.')">
-    <span class="sideicon">↵</span> 모의 확인 버튼
-  </button>
-  <div class="note">연습용 화면입니다. 실제 Apple 결제창이 아니며 돈이 청구되지 않습니다.</div>
-</main>
-<div class="toast" id="toast" role="dialog" aria-modal="true">
-  <div class="dialog">
-    <div class="check">✓</div><h2 id="msgTitle">완료</h2><p id="msgBody"></p>
-    <button onclick="document.getElementById('toast').classList.remove('show')">확인</button>
-  </div>
-</div>
-<script>
-function showMessage(title,body){document.getElementById('msgTitle').textContent=title;document.getElementById('msgBody').textContent=body;document.getElementById('toast').classList.add('show')}
-if('serviceWorker' in navigator && location.protocol.startsWith('http')){navigator.serviceWorker.register('./sw.js').catch(()=>{})}
-</script>
-</body></html>
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;background:#fff;color:#111}.landing{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;gap:14px;text-align:center}.small{font-size:13px;color:#929292}.start{background:#ffd83d;border:0;border-radius:16px;padding:19px 30px;min-width:290px;font-size:21px;font-weight:800;box-shadow:0 4px 0 #e6bb21}.hint{font-size:11px;color:#aaa}.overlay{display:none;position:fixed;inset:0;background:#191919;align-items:center;justify-content:center;padding:10px}.overlay.show{display:flex}.sheet{position:relative;width:min(100%,560px);min-height:min(96svh,900px);background:#f2f1f7;border-radius:48px;padding:32px 24px 25px;display:flex;flex-direction:column;align-items:center}.top{height:70px;display:grid;place-items:center;font-size:27px;font-weight:750}.close{position:absolute;top:20px;left:22px;width:58px;height:58px;border-radius:50%;border:1px solid #ccc;background:#fafafa;font-size:42px;font-weight:300}.demo{position:absolute;right:20px;top:43px;font-size:10px;color:#7653b5;border:1px solid #c8b8e8;border-radius:20px;padding:5px 8px;font-weight:800}.appicon{margin-top:38px;width:105px;height:105px;border-radius:27px;background:linear-gradient(145deg,#fff,#e4ddff);display:grid;place-items:center;font-size:52px;box-shadow:0 7px 20px #0002}h1{font-size:29px;margin:22px 0 7px;text-align:center}.subtitle{font-size:20px;color:#88868e}.card{width:100%;margin-top:auto;margin-bottom:25px;background:#fff;border-radius:34px;padding:25px 24px}.price{font-size:33px;font-weight:750}.once{font-size:21px;color:#929098;margin-top:3px}.line{height:1px;background:#dedde2;margin:23px 0 19px}.account{font-size:18px;color:#88868e}.pay{border:0;background:#1685ed;color:#fff;border-radius:15px;padding:16px 45px;font-size:20px;font-weight:700;box-shadow:0 3px 0 #0869c4}.note{font-size:11px;color:#777;text-align:center;margin-top:13px;line-height:1.5}.toast{display:none;position:fixed;inset:0;background:#0007;place-items:center;padding:24px}.toast.show{display:grid}.dialog{background:#fff;border-radius:26px;padding:27px;width:min(100%,360px);text-align:center}.check{font-size:42px;color:#248b56}.dialog p{color:#666;line-height:1.5}.dialog button{width:100%;border:0;border-radius:12px;background:#171717;color:#fff;padding:14px;font-size:16px}
+@media(max-height:700px){.sheet{min-height:96svh;padding-top:15px}.top{height:55px}.appicon{margin-top:8px;width:75px;height:75px;font-size:38px}h1{margin-top:12px}.card{padding:16px;margin-bottom:14px}}
+</style></head><body>
+<main class="landing"><div class="small">이것을 결제해 여러가지 혜택을 받으십시오!</div><button class="start" onclick="document.getElementById('overlay').classList.add('show')">100만원 결제</button><div class="hint">모의 결제 체험 · 실제 결제되지 않습니다</div></main>
+<div class="overlay" id="overlay"><section class="sheet"><button class="close" aria-label="닫기" onclick="document.getElementById('overlay').classList.remove('show')">×</button><div class="top">앱 내 구입</div><span class="demo">DEMO · 가상 결제</span><div class="appicon">⭐</div><h1>슈퍼 짱짱 패키지</h1><div class="subtitle">웹 사이트 내 구입</div><section class="card"><div class="price">₩1,000,000</div><div class="once">일회성 청구 · 모의 결제</div><div class="line"></div><div class="account">계정: demo@example.com</div></section><button class="pay" onclick="showDone()">결제</button><div class="note">연습용 모의 화면입니다. 실제 결제·청구는 발생하지 않습니다.</div></section></div>
+<div class="toast" id="toast" role="dialog" aria-modal="true"><div class="dialog"><div class="check">✓</div><h2>모의 결제가 완료되었습니다!</h2><p>100만원 결제 체험이 완료되었습니다.<br>실제 결제나 금전 청구는 전혀 발생하지 않았습니다.</p><button onclick="document.getElementById('toast').classList.remove('show')">확인</button></div></div>
+<script>function showDone(){document.getElementById('toast').classList.add('show')}if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});</script></body></html>
